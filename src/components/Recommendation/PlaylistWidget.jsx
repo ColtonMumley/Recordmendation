@@ -10,9 +10,10 @@ class PlaylistWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tracks: [], // List of recommended tracks
+      tracks: [], // List of recommended track uris
       modalIsVisible: false, // Determines of modal is visible
-      modalInput: "Recordmendations" // Default playlist name
+      modalInput: "Recordmendations", // Default playlist name
+      playlistId: "" // id of newly created playlist
     };
   }
 
@@ -50,6 +51,7 @@ class PlaylistWidget extends Component {
 
   //----------------------- Handler functions --------------------------
 
+  // Hides modals then calls createPlaylist()
   handleOk() {
     this.setState({
       modalIsVisible: false
@@ -57,6 +59,7 @@ class PlaylistWidget extends Component {
     this.createPlaylist();
   }
 
+  // Hides modal and sets modalInput back to default
   handleCancel() {
     this.setState({
       modalIsVisible: false,
@@ -64,16 +67,27 @@ class PlaylistWidget extends Component {
     });
   }
 
+  // Sets modalInput to value of input in the modal
   handleInput(e) {
     this.setState({ modalInput: e.target.value });
   }
 
-  // Shows modal then creates a playlist
+  //----------------------- End handler functions -----------------------
+
+  // Creates an empty playlist and sets playlistId to the id of the new playlist
   createPlaylist() {
-    spotifyApi.createPlaylist({ name: this.state.modalInput });
+    spotifyApi
+      .createPlaylist({ name: this.state.modalInput })
+      .then(res => this.setState({ playlistId: res.id }));
+    // Wait three seconds to addTracks() while setting state
+    setTimeout(() => this.addTracks(), 3000);
   }
 
-  //----------------------- End handler functions -----------------------
+  // Adds recommended tracks to playlist
+  addTracks() {
+    let { playlistId, tracks } = this.state;
+    spotifyApi.addTracksToPlaylist(playlistId, tracks);
+  }
 
   render() {
     return (
