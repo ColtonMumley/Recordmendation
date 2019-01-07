@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Spotify Web Api Auth Server
+
+For this project to run, you need to sign up for a Spotify developer account to obtain a client ID and client secret. Then clone https://github.com/spotify/web-api-auth-examples into a folder called auth-server and enter your ID and secret in app.js. 
+
+To run this authentication server, which serves as the back-end of my project, navigate to /authorization_code and run  `node app.js`.
+Open [http://localhost:8888](http://localhost:8888) to view it in the browser.
+
+Outside of the auth-server folder, create a new folder called client. This client folder will contain the React code that serves as the front-end of my project. Clone my git repo into this client folder and run `npm start`
+
 ## Available Scripts
 
 In the project directory, you can run:
