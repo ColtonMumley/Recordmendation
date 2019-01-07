@@ -20,17 +20,13 @@ class NowPlaying extends Component {
 
   componentDidMount() {
     spotifyApi.getMyCurrentPlaybackState().then(response => {
-      if (response.item === undefined) {
-        window.alert("Play somethin fool");
-      } else {
-        this.setState({
-          name: response.item.name,
-          artist: response.item.artists[0].name,
-          image: response.item.album.images[0].url,
-          popularity: response.item.popularity,
-          id: response.item.id
-        });
-      }
+      this.setState({
+        name: response.item.name,
+        artist: response.item.artists[0].name,
+        image: response.item.album.images[0].url,
+        popularity: response.item.popularity,
+        id: response.item.id
+      });
 
       this.getTrackFeatures();
     });
