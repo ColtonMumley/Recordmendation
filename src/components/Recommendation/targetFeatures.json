@@ -1,0 +1,39 @@
+{
+  "targets": [
+    {
+      "label": "Popularity",
+      "value": "popularity",
+      "isDecimal": false
+    },
+    {
+      "label": "Energy",
+      "value": "energy",
+      "isDecimal": true
+    },
+    {
+      "label": "Danceability",
+      "value": "danceability",
+      "isDecimal": true
+    },
+    {
+      "label": "Happiness",
+      "value": "valence",
+      "isDecimal": true
+    },
+    {
+      "label": "Acousticness",
+      "value": "acousticness",
+      "isDecimal": true
+    },
+    {
+      "label": "Instumentalness",
+      "value": "instrumentalness",
+      "isDecimal": true
+    },
+    {
+      "label": "Liveness",
+      "value": "liveness",
+      "isDecimal": true
+    }
+  ]
+}

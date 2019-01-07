@@ -1,0 +1,19 @@
+.ant-checkbox {
+  margin-right: 15px !important;
+}
+
+/* Checkbox color */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+
+/* Slider color */
+.ant-slider-track {
+  background-color: #000 !important;
+}
+
+/* Slider knob color */
+.ant-slider-handle {
+  border-color: #000 !important;
+}
