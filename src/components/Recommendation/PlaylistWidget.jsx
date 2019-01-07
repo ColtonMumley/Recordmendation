@@ -13,7 +13,7 @@ class PlaylistWidget extends Component {
       tracks: [], // List of recommended track uris
       modalIsVisible: false, // Determines of modal is visible
       modalInput: "Recordmendations", // Default playlist name
-      playlistId: "" // id of newly created playlist
+      playlistId: "" // Initialize id of newly created playlist
     };
   }
 
