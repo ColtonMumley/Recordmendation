@@ -8,7 +8,7 @@ For this project to run, you need to sign up for a Spotify developer account to 
 To run this authentication server, which serves as the back-end of my project, navigate to /authorization_code and run  `node app.js`.
 Open [http://localhost:8888](http://localhost:8888) to view it in the browser.
 
-Outside of the auth-server folder, create a new folder called client. This client folder will contain the React code that serves as the front-end of my project. Clone my git repo into this client folder.
+Outside of the auth-server folder, create a new folder called client. This client folder will contain the React code that serves as the front-end of my project. Clone my git repo into this client folder and run `npm start`
 
 ## Available Scripts
 
