@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import { Row, Modal, Button } from "antd";
+import { Row, Modal, Input } from "antd";
 
 import "../css/PlaylistWidget.css";
 
@@ -53,6 +53,9 @@ class PlaylistWidget extends Component {
 
   // Hides modals then calls createPlaylist()
   handleOk() {
+    // if (this.state.modalInput === "") {
+    //   alert("enter a name stoopid");
+    // }
     this.setState({
       modalIsVisible: false
     });
@@ -79,8 +82,9 @@ class PlaylistWidget extends Component {
     spotifyApi
       .createPlaylist({ name: this.state.modalInput })
       .then(res => this.setState({ playlistId: res.id }));
-    // Wait three seconds to addTracks() while setting state
-    setTimeout(() => this.addTracks(), 3000);
+    // Wait 1 second to addTracks() while setting state
+    setTimeout(() => this.addTracks(), 1000);
+    this.setState({ modalInput: "Recordmendations" });
   }
 
   // Adds recommended tracks to playlist
@@ -103,8 +107,7 @@ class PlaylistWidget extends Component {
           onOk={() => this.handleOk()}
           onCancel={() => this.handleCancel()}
         >
-          <input
-            type="text"
+          <Input
             placeholder="Enter playlist name..."
             onChange={e => this.handleInput(e)}
           />

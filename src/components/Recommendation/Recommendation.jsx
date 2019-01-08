@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react";
+import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Checkbox } from "antd";
@@ -167,12 +167,9 @@ class Recommendation extends Component {
               </div>
             </Col>
             <Col md={12} lg={4}>
-              {/* <ul>{this.showTracks()}</ul> */}
-              <Suspense fallback={<div>Loading...</div>}>
-                <PlaylistWidget
-                  tracks={this.state.trackList.map(track => track.uri)}
-                />
-              </Suspense>
+              <PlaylistWidget
+                tracks={this.state.trackList.map(track => track.uri)}
+              />
             </Col>
           </Row>
         </Grid>
