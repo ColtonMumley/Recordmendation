@@ -9,11 +9,11 @@ class TextBox extends Component {
           Enter the number of songs:
         </p>
         <Input
-          style={{ display: "inline", width: "100px" }}
+          style={{ display: "inline", width: "120px" }}
           type="number"
           min="1"
-          max="50"
-          placeholder="(Max 50)"
+          max="100"
+          placeholder="(Max. 100)"
           onChange={this.props.onChangeValue}
         />
       </div>

@@ -12,7 +12,7 @@ class PlaylistWidget extends Component {
     this.state = {
       tracks: [], // List of recommended track uris
       modalIsVisible: false, // Determines of modal is visible
-      modalInput: "Recordmendations", // Default playlist name
+      modalInput: "", // Default playlist name
       playlistId: "" // Initialize id of newly created playlist
     };
   }
@@ -66,7 +66,7 @@ class PlaylistWidget extends Component {
   handleCancel() {
     this.setState({
       modalIsVisible: false,
-      modalInput: "Recordmendations"
+      modalInput: ""
     });
   }
 
@@ -79,12 +79,15 @@ class PlaylistWidget extends Component {
 
   // Creates an empty playlist and sets playlistId to the id of the new playlist
   createPlaylist() {
+    if (this.state.modalInput === "") {
+      alert("Name your playlist");
+    }
     spotifyApi
       .createPlaylist({ name: this.state.modalInput })
       .then(res => this.setState({ playlistId: res.id }));
     // Wait 1 second to addTracks() while setting state
     setTimeout(() => this.addTracks(), 1000);
-    this.setState({ modalInput: "Recordmendations" });
+    this.setState({ modalInput: "" });
   }
 
   // Adds recommended tracks to playlist
@@ -108,6 +111,7 @@ class PlaylistWidget extends Component {
           onCancel={() => this.handleCancel()}
         >
           <Input
+            value={this.state.modalInput}
             placeholder="Enter playlist name..."
             onChange={e => this.handleInput(e)}
           />

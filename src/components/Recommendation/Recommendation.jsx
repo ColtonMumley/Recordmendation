@@ -8,6 +8,7 @@ import CustomSlider from "./CustomSlider";
 import TextBox from "../TextBox";
 import SeedGenres from "./SeedGenres";
 import PlaylistWidget from "./PlaylistWidget";
+import SearchArtists from "./SearchArtists";
 
 import "../css/Recommendation.css";
 import * as targetFeatures from "./targetFeatures.json";
@@ -32,8 +33,9 @@ class Recommendation extends Component {
 
     // Initialized options to be passed to getRecommendations()
     this.options = {
-      seed_genres: "pop", // Inital seed_genre
-      limit: 10 // Number of tracks to be displayed
+      seed_artists: "3PhoLpVuITZKcymswpck5b", // Inital seed_genre
+      limit: 20, // Number of tracks to be displayed
+      seed_genres: "indie"
     };
   }
 
@@ -116,7 +118,7 @@ class Recommendation extends Component {
 
   // Handles new seed_genre
   handleGenres(e) {
-    this.options.seed_genres = e.map(item => item.value);
+    this.options.seed_genres = e.value;
   }
 
   // Handles any slider dynamically
@@ -157,10 +159,10 @@ class Recommendation extends Component {
                 className="btn btn-dark"
                 onClick={() => this.componentDidMount()}
               >
-                Get Recommendations{" "}
+                Get Recommendations
               </button>
               <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
-              <p>Select Genres</p>
+              <p />
               <SeedGenres onChangeValue={e => this.handleGenres(e)} />
               <div style={{ marginTop: "40px", paddingLeft: "0px" }}>
                 {this.showSliders()}
@@ -173,6 +175,7 @@ class Recommendation extends Component {
             </Col>
           </Row>
         </Grid>
+        <SearchArtists />
       </div>
     );
   }

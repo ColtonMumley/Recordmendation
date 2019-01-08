@@ -22,9 +22,7 @@ class SeedGenres extends Component {
     return (
       <div>
         <Select
-          isMulti
-          defaultValue={{ value: "pop", label: "Pop" }}
-          placeholder="Select Genres... (Max 5)"
+          placeholder="Select Genre..."
           options={this.options}
           onChange={this.props.onChangeValue}
         />
