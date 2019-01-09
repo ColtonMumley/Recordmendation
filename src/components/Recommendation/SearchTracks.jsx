@@ -6,7 +6,7 @@ import "../css/Search.css";
 
 const spotifyApi = new SpotifyWebApi();
 
-class SearchArtists extends Component {
+class SearchTracks extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,21 +17,21 @@ class SearchArtists extends Component {
 
   val = ""; // Value of search term
 
-  fetchArtist(e) {
+  fetchTrack(e) {
     this.setState({ input: e });
     this.val = e;
-    spotifyApi.searchArtists(this.val).then(res =>
+    spotifyApi.searchTracks(this.val).then(res =>
       this.setState({
-        results: res.artists.items
+        results: res.tracks.items
       })
     );
   }
 
   showOptions() {
-    return this.state.results.map((artist, i) => {
+    return this.state.results.map((track, i) => {
       return (
-        <Select.Option key={i} value={artist.id}>
-          {artist.name}
+        <Select.Option key={i} value={track.id}>
+          {track.name}
         </Select.Option>
       );
     });
@@ -45,10 +45,10 @@ class SearchArtists extends Component {
           showArrow={false}
           className="searchbar"
           filterOption={false}
-          placeholder="Search Artists..."
+          placeholder="Search Tracks..."
           showSearch={true}
           notFoundContent={null}
-          onSearch={e => this.fetchArtist(e)}
+          onSearch={e => this.fetchTrack(e)}
           onSelect={value => this.props.handleSelect(value)}
         >
           {this.showOptions()}
@@ -58,4 +58,4 @@ class SearchArtists extends Component {
   }
 }
 
-export default SearchArtists;
+export default SearchTracks;

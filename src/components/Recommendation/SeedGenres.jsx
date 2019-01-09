@@ -22,6 +22,7 @@ class SeedGenres extends Component {
     return (
       <div>
         <Select
+          isClearable={true}
           placeholder="Select Genre..."
           options={this.options}
           onChange={this.props.onChangeValue}

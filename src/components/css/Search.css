@@ -1,0 +1,14 @@
+.searchbar {
+  width: 100%;
+}
+
+.ant-select-selection--single {
+  height: 35px !important;
+  top: 60% !important;
+}
+
+.ant-select-selection__placeholder,
+.ant-select-search_field_placeholder {
+  color: rgb(138, 138, 138) !important;
+  top: 60% !important;
+}

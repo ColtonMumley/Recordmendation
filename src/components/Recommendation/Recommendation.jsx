@@ -9,6 +9,7 @@ import TextBox from "../TextBox";
 import SeedGenres from "./SeedGenres";
 import PlaylistWidget from "./PlaylistWidget";
 import SearchArtists from "./SearchArtists";
+import SearchTracks from "./SearchTracks";
 
 import "../css/Recommendation.css";
 import * as targetFeatures from "./targetFeatures.json";
@@ -33,14 +34,16 @@ class Recommendation extends Component {
 
     // Initialized options to be passed to getRecommendations()
     this.options = {
-      seed_artists: "3PhoLpVuITZKcymswpck5b", // Inital seed_genre
       limit: 20, // Number of tracks to be displayed
-      seed_genres: "indie"
+      seed_artists: "", // Inital seed_artist
+      seed_genres: "", // Initial seed_genre
+      seed_tracks: "" // Initial seed_track
     };
   }
 
   // Gets recommended tracks
   componentDidMount() {
+    this.checkForEmptySeeds();
     spotifyApi
       .getRecommendations(this.options)
       .then(res => {
@@ -58,23 +61,26 @@ class Recommendation extends Component {
       .catch(error => console.log(error));
   }
 
-  //--------------------- Show functions -------------------------------
-
-  // Displays a list of recommended tracks
-  showTracks() {
-    return (
-      <div>
-        <h4>Your Recommended Songs</h4>
-        {this.state.trackList.map((track, index) => {
-          return (
-            <li className="list-group-item" key={index}>
-              {track.name} by {track.artist}
-            </li>
-          );
-        })}
-      </div>
-    );
+  checkForEmptySeeds() {
+    if (
+      this.options.seed_tracks === undefined &&
+      this.options.seed_genres === undefined &&
+      this.options.seed_tracks === undefined
+    ) {
+      alert("Please select a genre, artist, and/or song");
+    }
+    if (this.options.seed_artists === "") {
+      delete this.options.seed_artists;
+    }
+    if (this.options.seed_genres === "") {
+      delete this.options.seed_genres;
+    }
+    if (this.options.seed_tracks === "") {
+      delete this.options.seed_tracks;
+    }
   }
+
+  //--------------------- Show functions -------------------------------
 
   // Shows sliders with checkboxes
   showSliders() {
@@ -118,7 +124,21 @@ class Recommendation extends Component {
 
   // Handles new seed_genre
   handleGenres(e) {
-    this.options.seed_genres = e.value;
+    if (e == null) {
+      this.options.seed_genres = "";
+    } else {
+      this.options.seed_genres = e.value;
+    }
+  }
+
+  // Handles new seed_artist
+  handleArtist(value) {
+    this.options.seed_artists = value;
+  }
+
+  // Handles new seed_track
+  handleTrack(value) {
+    this.options.seed_tracks = value;
   }
 
   // Handles any slider dynamically
@@ -159,11 +179,13 @@ class Recommendation extends Component {
                 className="btn btn-dark"
                 onClick={() => this.componentDidMount()}
               >
-                Get Recommendations
+                Get Recordmendations
               </button>
               <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
               <p />
               <SeedGenres onChangeValue={e => this.handleGenres(e)} />
+              <SearchArtists handleSelect={value => this.handleArtist(value)} />
+              <SearchTracks handleSelect={value => this.handleTrack(value)} />
               <div style={{ marginTop: "40px", paddingLeft: "0px" }}>
                 {this.showSliders()}
               </div>
@@ -175,7 +197,6 @@ class Recommendation extends Component {
             </Col>
           </Row>
         </Grid>
-        <SearchArtists />
       </div>
     );
   }
