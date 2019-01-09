@@ -31,7 +31,7 @@ class SearchTracks extends Component {
     return this.state.results.map((track, i) => {
       return (
         <Select.Option key={i} value={track.id}>
-          {track.name}
+          {track.name} by {track.artists[0].name}
         </Select.Option>
       );
     });
