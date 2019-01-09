@@ -11,7 +11,9 @@ class Layout extends Component {
       <div>
         <Grid fluid={true}>
           <Row>
-            <Recommendation />
+            <Col md={12}>
+              <Recommendation />
+            </Col>
           </Row>
         </Grid>
       </div>

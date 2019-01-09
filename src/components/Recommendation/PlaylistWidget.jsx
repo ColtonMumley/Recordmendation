@@ -53,9 +53,6 @@ class PlaylistWidget extends Component {
 
   // Hides modals then calls createPlaylist()
   handleOk() {
-    // if (this.state.modalInput === "") {
-    //   alert("enter a name stoopid");
-    // }
     this.setState({
       modalIsVisible: false
     });
@@ -101,9 +98,6 @@ class PlaylistWidget extends Component {
       <div>
         <h4>Your Recordmendations</h4>
         <ul className="scrollbox">{this.showTracks()}</ul>
-        <button className="btn btn-dark" onClick={() => this.showModal()}>
-          Add These Songs To A Playlist
-        </button>
         <Modal
           title="What will you call this playlist?"
           visible={this.state.modalIsVisible}
@@ -116,6 +110,9 @@ class PlaylistWidget extends Component {
             onChange={e => this.handleInput(e)}
           />
         </Modal>
+        <button className="btn btn-dark" onClick={() => this.showModal()}>
+          Add These Songs To A Playlist
+        </button>
       </div>
     );
   }

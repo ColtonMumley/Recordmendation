@@ -33,15 +33,12 @@ class Recommendation extends Component {
 
     // Initialized options to be passed to getRecommendations()
     this.options = {
-      limit: 20, // Number of tracks to be displayed
-      seed_artists: "", // Inital seed_artist
-      seed_genres: "", // Initial seed_genre
-      seed_tracks: "" // Initial seed_track
+      limit: 20 // Number of tracks to be displayed
     };
   }
 
   // Gets recommended tracks
-  componentDidMount() {
+  getRecTracks() {
     this.checkForEmptySeeds();
     spotifyApi
       .getRecommendations(this.options)
@@ -64,18 +61,9 @@ class Recommendation extends Component {
     if (
       this.options.seed_tracks === undefined &&
       this.options.seed_genres === undefined &&
-      this.options.seed_tracks === undefined
+      this.options.seed_artists === undefined
     ) {
       alert("Please select a genre, artist, and/or song");
-    }
-    if (this.options.seed_artists === "") {
-      delete this.options.seed_artists;
-    }
-    if (this.options.seed_genres === "") {
-      delete this.options.seed_genres;
-    }
-    if (this.options.seed_tracks === "") {
-      delete this.options.seed_tracks;
     }
   }
 
@@ -113,7 +101,7 @@ class Recommendation extends Component {
   // Handles new seed_genre
   handleGenres(e) {
     if (e == null) {
-      this.options.seed_genres = "";
+      delete this.options.seed_genres;
     } else {
       this.options.seed_genres = e.value;
     }
@@ -127,6 +115,20 @@ class Recommendation extends Component {
   // Handles new seed_track
   handleTrack(value) {
     this.options.seed_tracks = value;
+  }
+
+  // Handles when search artist is cleared
+  handleClearArtist(e) {
+    if (e === undefined) {
+      delete this.options.seed_artists;
+    }
+  }
+
+  // Handles when search track is cleared
+  handleClearTrack(e) {
+    if (e === undefined) {
+      delete this.options.seed_tracks;
+    }
   }
 
   // Handles any slider dynamically
@@ -159,32 +161,36 @@ class Recommendation extends Component {
 
   render() {
     return (
-      <div>
-        <Grid>
-          <Row>
-            <Col md={12} lg={4}>
-              <button
-                className="btn btn-dark"
-                onClick={() => this.componentDidMount()}
-              >
-                Get Recordmendations
-              </button>
-              <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
-              <p />
-              <SeedGenres onChangeValue={e => this.handleGenres(e)} />
-              <SearchArtists handleSelect={value => this.handleArtist(value)} />
-              <SearchTracks handleSelect={value => this.handleTrack(value)} />
-              <div style={{ marginTop: "40px", paddingLeft: "0px" }}>
-                {this.showSliders()}
-              </div>
-            </Col>
-            <Col md={12} lg={4}>
-              <PlaylistWidget
-                tracks={this.state.trackList.map(track => track.uri)}
-              />
-            </Col>
-          </Row>
-        </Grid>
+      <div className="container-fluid">
+        <Row>
+          <Col lg={5}>
+            <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
+            <p />
+            <SeedGenres onChangeValue={e => this.handleGenres(e)} />
+            <SearchArtists
+              handleClear={e => this.handleClearArtist(e)}
+              handleSelect={value => this.handleArtist(value)}
+            />
+            <SearchTracks
+              handleClear={e => this.handleClearTrack(e)}
+              handleSelect={value => this.handleTrack(value)}
+            />
+            <div style={{ marginTop: "40px", paddingLeft: "0px" }}>
+              {this.showSliders()}
+            </div>
+            <button
+              className="btn btn-dark"
+              onClick={() => this.getRecTracks()}
+            >
+              Get Recordmendations
+            </button>
+          </Col>
+          <Col lg={7}>
+            <PlaylistWidget
+              tracks={this.state.trackList.map(track => track.uri)}
+            />
+          </Col>
+        </Row>
       </div>
     );
   }

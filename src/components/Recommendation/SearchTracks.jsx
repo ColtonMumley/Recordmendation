@@ -41,6 +41,7 @@ class SearchTracks extends Component {
     return (
       <div>
         <Select
+          onChange={e => this.props.handleClear(e)}
           allowClear={true}
           showArrow={false}
           className="searchbar"
