@@ -95,7 +95,7 @@ class PlaylistWidget extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h4>Your Recordmendations</h4>
         <ul className="scrollbox">{this.showTracks()}</ul>
         <Modal

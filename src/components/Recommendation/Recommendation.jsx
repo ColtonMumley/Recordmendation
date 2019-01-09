@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Checkbox } from "antd";
 
@@ -75,6 +75,7 @@ class Recommendation extends Component {
       return (
         <Row key={id}>
           <Checkbox
+            style={{ display: "inline" }}
             onChange={e => this.handleCheckbox(e, "target_" + target.value, id)}
           />
           <CustomSlider
@@ -165,16 +166,17 @@ class Recommendation extends Component {
         <Row>
           <Col lg={5}>
             <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
-            <p />
-            <SeedGenres onChangeValue={e => this.handleGenres(e)} />
-            <SearchArtists
-              handleClear={e => this.handleClearArtist(e)}
-              handleSelect={value => this.handleArtist(value)}
-            />
-            <SearchTracks
-              handleClear={e => this.handleClearTrack(e)}
-              handleSelect={value => this.handleTrack(value)}
-            />
+            <div class="search-bars">
+              <SeedGenres onChangeValue={e => this.handleGenres(e)} />
+              <SearchArtists
+                handleClear={e => this.handleClearArtist(e)}
+                handleSelect={value => this.handleArtist(value)}
+              />
+              <SearchTracks
+                handleClear={e => this.handleClearTrack(e)}
+                handleSelect={value => this.handleTrack(value)}
+              />
+            </div>
             <div style={{ marginTop: "40px", paddingLeft: "0px" }}>
               {this.showSliders()}
             </div>

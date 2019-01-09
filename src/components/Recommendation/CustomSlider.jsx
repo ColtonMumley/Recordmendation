@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { Slider } from "antd";
 
+import "../css/CustomSlider.css";
+
 class CustomSlider extends Component {
   render() {
     return (
-      <div>
-        <label>{this.props.label}</label>
+      <div className="wrapper">
+        <p>{this.props.label}</p>
         <Slider
           disabled={this.props.disabled}
-          style={{ width: "300px" }}
+          style={{ width: "90%" }}
           onAfterChange={this.props.onChangeValue}
           defaultValue={50}
         />

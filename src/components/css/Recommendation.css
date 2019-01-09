@@ -1,5 +1,6 @@
 .ant-checkbox {
   margin-right: 15px !important;
+  margin-left: 15px !important;
 }
 
 /* Checkbox color */
@@ -16,4 +17,9 @@
 /* Slider knob color */
 .ant-slider-handle {
   border-color: #000 !important;
+}
+
+.search-bars {
+  margin-top: 3%;
+  width: 91%;
 }
