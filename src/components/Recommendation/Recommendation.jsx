@@ -3,7 +3,6 @@ import { Grid, Row, Col } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Checkbox } from "antd";
 
-import CustomAlert from "../CustomAlert";
 import CustomSlider from "./CustomSlider";
 import TextBox from "../TextBox";
 import SeedGenres from "./SeedGenres";
@@ -101,17 +100,6 @@ class Recommendation extends Component {
       );
     });
   }
-
-  // Shows error message if there are no seeds
-  // showError() {
-  //   if (
-  //     this.options.seed_genres === undefined &&
-  //     this.options.seed_artist === undefined &&
-  //     this.options.seed_tracks === undefined
-  //   ) {
-  //     return <CustomAlert />;
-  //   }
-  // }
 
   //----------------------- End show functions --------------------------
 

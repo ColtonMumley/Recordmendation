@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Layout.css";
 
 import Recommendation from "./Recommendation/Recommendation";
-import NowPlaying from "../components/NowPlaying";
 
 class Layout extends Component {
   render() {
@@ -12,12 +11,7 @@ class Layout extends Component {
       <div>
         <Grid fluid={true}>
           <Row>
-            <Col md={3}>
-              <NowPlaying />
-            </Col>
-            <Col md={9}>
-              <Recommendation />
-            </Col>
+            <Recommendation />
           </Row>
         </Grid>
       </div>
