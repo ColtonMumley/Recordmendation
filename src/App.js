@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <div className="App">
         <a href="http://localhost:8888" style={{ display: this.showLogin() }}>
-          <button className="btn-primary btn-lg login-btn">
+          <button className="btn-light btn-lg login-btn">
             Login With Spotify
           </button>
         </a>

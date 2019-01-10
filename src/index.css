@@ -1,5 +1,4 @@
 body {
-  margin: 20px !important;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -8,17 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   /* Background gradient */
-  background: #fdc830; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f37335,
-    #fdc830
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f37335,
-    #fdc830
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1b5299;
+  background: -webkit-linear-gradient(180deg, #1b5299 0%, #639bdb 100%);
   overflow-x: hidden;
 }
 

@@ -4,11 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Layout.css";
 
 import Recommendation from "./Recommendation/Recommendation";
+import Masthead from "./Masthead";
 
 class Layout extends Component {
   render() {
     return (
       <div>
+        <Masthead />
         <Grid fluid={true}>
           <Row>
             <Col md={12}>

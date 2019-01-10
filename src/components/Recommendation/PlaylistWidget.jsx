@@ -96,7 +96,7 @@ class PlaylistWidget extends Component {
   render() {
     return (
       <div className="container">
-        <h4>Your Recordmendations</h4>
+        <h5>Your Recordmendations</h5>
         <ul className="scrollbox">{this.showTracks()}</ul>
         <Modal
           title="What will you call this playlist?"
@@ -110,7 +110,10 @@ class PlaylistWidget extends Component {
             onChange={e => this.handleInput(e)}
           />
         </Modal>
-        <button className="btn btn-dark" onClick={() => this.showModal()}>
+        <button
+          className="btn btn-outline-light"
+          onClick={() => this.showModal()}
+        >
           Add These Songs To A Playlist
         </button>
       </div>

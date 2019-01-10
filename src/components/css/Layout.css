@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:500");
 p {
+  color: #f3f3f3 !important;
   margin-left: 0% !important;
+  margin-bottom: 0% !important;
   font-size: 120%;
   font-family: "Roboto", sans-serif;
 }

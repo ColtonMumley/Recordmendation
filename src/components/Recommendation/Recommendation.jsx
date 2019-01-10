@@ -165,6 +165,7 @@ class Recommendation extends Component {
       <div className="container-fluid">
         <Row>
           <Col lg={5}>
+            <h5>Create A Playlist</h5>
             <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
             <div class="search-bars">
               <SeedGenres onChangeValue={e => this.handleGenres(e)} />
@@ -177,11 +178,9 @@ class Recommendation extends Component {
                 handleSelect={value => this.handleTrack(value)}
               />
             </div>
-            <div style={{ marginTop: "40px", paddingLeft: "0px" }}>
-              {this.showSliders()}
-            </div>
+            <div className="sliders">{this.showSliders()}</div>
             <button
-              className="btn btn-dark"
+              className="btn btn-outline-light"
               onClick={() => this.getRecTracks()}
             >
               Get Recordmendations
