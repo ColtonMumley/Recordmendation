@@ -7,7 +7,7 @@ class Masthead extends Component {
   render() {
     return (
       <div className="head">
-        <img src={logo} />
+        <img style={{ display: "inline" }} src={logo} />
       </div>
     );
   }
