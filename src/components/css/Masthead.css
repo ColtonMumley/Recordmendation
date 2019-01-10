@@ -1,0 +1,23 @@
+.head {
+  height: 155px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 20%);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Shrikhand");
+@import url("https://fonts.googleapis.com/css?family=Monoton");
+
+h1 {
+  color: #f5f5f5 !important;
+  /* font-family: "Shrikhand", cursive; */
+  font-family: "Monoton", cursive;
+  font-size: 300%;
+  text-align: center;
+}
+
+img {
+  height: 150%;
+  width: auto;
+}
