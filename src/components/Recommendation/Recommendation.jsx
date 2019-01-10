@@ -165,7 +165,7 @@ class Recommendation extends Component {
       <div className="container-fluid">
         <Row>
           <Col lg={5}>
-            <h5>Create A Playlist</h5>
+            <h5>Find New Songs</h5>
             <TextBox onChangeValue={e => this.handleNumberOfSongs(e)} />
             <div class="search-bars">
               <SeedGenres onChangeValue={e => this.handleGenres(e)} />
